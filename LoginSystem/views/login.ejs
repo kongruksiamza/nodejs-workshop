@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <%- include layout %>
+        <h2 align="center">Login Form</h2>
+        <%- messages() %>
+        <form class="form-group" action="/users/login" method="post">
+                <div class="form-group">
+                      <label for="">Username:</label>
+                      <input type="text" name="username" value="" class="form-control">
+                </div>
+                <div class="form-group">
+                      <label for="">Password:</label>
+                      <input type="password" name="password" value="" class="form-control">
+                </div>
+                <input type="submit" name="" value="Login" class="btn btn-success">
+        </form>
+    </div>
+  </body>
+  <script type="text/javascript">
+        $('#messages').addClass("alert alert-danger");
+  </script>
+</html>

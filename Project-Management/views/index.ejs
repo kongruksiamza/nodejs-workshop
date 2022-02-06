@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <%- include layout %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 my-4">
+        <% if(projects.length>0){ %>
+          <div class="row">
+          <% projects.forEach(function(project){ %>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+                <a href="/details/<%= project._id %>"><img class="card-img-top" src="/images/<%-project.image%>" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    ชื่อ: <a href="/details/<%= project._id %>"><%= project.name %></a>
+                  </h4>
+                  <h6>วันสร้างโปรเจค : <%=project.date%></h6>
+                  <p class="card-text"><%= descriptionText(project.description,70)%></p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">
+                    <a href="/details/<%= project._id %>">See More</a>
+                  </small>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+        <% }else { %>
+              <h2>ไม่มีข้อมูลในฐานข้อมูล</h2>
+        <%} %>
+      </div>
+    </div>
+  </div>
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Project Management : <a href="/admin/projects">Backend</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>

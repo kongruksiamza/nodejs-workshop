@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <%- include layout %>
+  <div class="container my-4">
+    <% if(cart.items.length>0){ %>
+    <h3>ตะกร้าสินค้า</h3>
+    <table class="table my-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">รหัสสินค้า</th>
+          <th scope="col">ชื่อสินค้า</th>
+          <th scope="col">จำนวน</th>
+          <th scope="col">ราคา</th>
+          <th scope="col">รวม</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cart.items.forEach(function(product){ %>
+        <tr>
+          <td>
+            <a href="/products/show/<%= product.item %>"><%= product.item %></a>
+          </td>
+          <th><%= product.title %></th>
+          <td><%= product.qty %></td>
+          <td><%= formatMoney(product.price) %></td>
+          <th><%= formatMoney(product.price * product.qty) %></th>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+    <h2 align="right">ยอดชำระเงิน : <%= formatMoney(cart.total) %></h2>
+    <form class="form-group" action="/payment" method="post">
+        <script
+        src="http://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-name="Kong Shop"
+        data-key="pk_test_y6cRKiLlTxPlSxVicjdBlSxU00fDvEcDuD"
+        data-description="KongRuksiam Shop IT"
+        data-amount="<%= cart.total*100 %>"
+        data-currency="usd"
+        ></script>
+        <input type="hidden" name="amount" value="<%= cart.total*100 %>">
+    </form>
+    <% } else { %>
+    <div class="alert alert-danger">
+        ไม่มีสินค้าในตะกร้า
+    </div>
+    <% }%>
+  </div>
+</body>
+
+</html>

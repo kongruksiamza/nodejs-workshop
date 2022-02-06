@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>My Class</title>
+</head>
+
+<body>
+  <%- include ../layout %>
+  <div class="container">
+    <h2 align="center">Class : <%= className.title %></h2>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">LessonID</th>
+          <th scope="col">Lesson Name</th>
+          <th scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(className.lesson){%>
+        <% for (var result of className.lesson){ %>
+        <tr>
+          <td><%= result.lesson_number %></td>
+          <td><%= result.lesson_title %></td>
+          <td><a href="/classes/<%=className.class_id %>/lesson/<%=result.lesson_number %>" class="btn btn-primary">View</a></td>
+        </tr>
+        <% } %>
+        <% } %>
+      </tbody>
+
+    </table>
+    <br>
+  </div>
+</body>
+
+</html>

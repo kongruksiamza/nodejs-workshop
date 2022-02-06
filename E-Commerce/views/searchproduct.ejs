@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <%- include layout %>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <%- include sidebar %>
+      <div class="col-lg-9">
+        <div class="row my-4">
+          <% products.forEach(function(product){ %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="/products/show/<%= product._id %>"><img class="card-img-top" src="<%=product.img %>" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="/products/show/<%= product._id %>"><%= product.name %></a>
+                </h4>
+                <h5>$ <%= formatMoney(product.price) %></h5>
+                <p class="card-text"><%= descriptionText(product.description,70) %></p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-success">เพิ่มลงตะกร้า</a>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <% if(products.length==0){ %>
+              <div class="row-my-4">
+                <div class="alert alert-danger">
+                  ไม่พบสินค้าในหมวดหมู่นี้
+                </div>
+              </div>
+        <% } %>
+        <!-- /.row -->
+      </div>
+      <!-- /.col-lg-9 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <% if(products.length==0){ %>
+        <div class="my-5"></div>
+  <% } %>
+  <!-- /.container -->
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-2 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+</body>
+
+</html>

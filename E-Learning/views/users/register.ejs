@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <%- include ../layout %>
+      <div class="container">
+            <h2 align="center">Register Form</h2>
+            <% if(locals.errors){ %>
+              <ul class="alert alert-danger">
+                <% Object.values(errors).forEach(function(error){%>
+                        <li><%= error.msg %></li>
+                <%})%>
+              </ul>
+            <%}%>
+            <form class="form-group" action="/users/register" method="post">
+                  <div class="form-group">
+                        <label for="">ผู้เรียน/ผู้สอน</label>
+                        <select class="form-control" name="type">
+                              <option value="student">Student</option>
+                              <option value="instructor">Instructor</option>
+                        </select>
+                  </div>
+                  <div class="form-group">
+                        <label for="">UserName:</label>
+                        <input type="text" name="username" value="" class="form-control">
+                  </div>
+                  <div class="form-group">
+                        <label for="">Password:</label>
+                        <input type="password" name="password" value="" class="form-control">
+                  </div>
+                  <div class="form-group">
+                        <label for="">Email:</label>
+                        <input type="text" name="email" value="" class="form-control">
+                  </div>
+                  <div class="form-group">
+                        <label for="">First Name:</label>
+                        <input type="text" name="fname" value="" class="form-control">
+                  </div>
+                  <div class="form-group">
+                        <label for="">Last Name:</label>
+                        <input type="text" name="lname" value="" class="form-control">
+                  </div>
+                  <input type="submit" name="" value="ลงทะเบียน" class="btn btn-success">
+            </form>
+      </div>
+  </body>
+</html>

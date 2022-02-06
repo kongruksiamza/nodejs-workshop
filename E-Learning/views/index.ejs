@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>E-Learning System</title>
+</head>
+
+<body>
+  <%- include layout %>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">E-Learning System</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-success btn-lg" href="/users/register" role="button">สมัครเรียน</a>
+    </div>
+    <% if(locals.user) {%>
+        <h3 align="center">คอร์สเรียน</h3>
+        <% if(locals.classes){ %>
+        <div class="row">
+        <% Object.values(classes).forEach(function(classed){%>
+              <div class="col-sm-4">
+                  <div class="card" style="width: 18rem;margin-top:10px">
+                    <img class="card-img-top" src="<%= classed.img_url %>">
+                    <div class="card-body">
+                      <h5 class="card-title">คลาส: <%= classed.title %></h5>
+                      <h6 class="card-subtitle mb-2 text-muted">อาจารย์ : <%= classed.instructor %></h6>
+                      <p class="card-text"><%= classed.description %></p>
+                      <form class="" action="/students/classes/register" method="post">
+                        <input type="hidden" name="student_username" value="<%= user.username %>">
+                        <input type="hidden" name="class_id" value="<%= classed.class_id %>">
+                        <input type="hidden" name="class_title" value="<%= classed.title %>">
+                        <input type="submit" class="btn btn-primary" value="เข้าเรียน">
+                      </form>
+                    </div>
+                  </div>
+              </div>
+          <%})%>
+        </div>
+        <%}%>
+      <% } %>
+    </div>
+  </body>
+</html>

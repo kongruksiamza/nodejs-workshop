@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <%- include layout %>
+  <div class="container">
+    <% projects.forEach(function(project){ %>
+          <img src="/images/<%=project.image %>" class="my-4 img-thumbnail">
+          <p>
+              <strong>ชื่อโปรเจค</strong>
+              <%=project.name %>
+          </p>
+          <p>
+              <strong>รายละเอียด</strong>
+              <%=project.description %>
+          </p>
+          <p>
+              <strong>วันสร้างโปรเจค</strong>
+              <%=project.date %>
+          </p>
+    <%})%>
+  </div>
+</body>
+
+</html>

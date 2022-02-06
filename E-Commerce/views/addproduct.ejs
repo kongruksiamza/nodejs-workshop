@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <% include layout %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 my-4">
+        <h2 align="center">แบบฟอร์มบันทึกสินค้า</h2>
+        <% if(locals.errors) { %>
+              <ul class="alert alert-danger" role="alert">
+                  <% Object.values(errors).forEach(function(error){ %>
+                        <li><%= error.msg %></li>
+                  <% }) %>
+              </ul>
+        <% } %>
+        <form class="" action="/products/add" method="post">
+          <div class="form-group">
+            <label for="">ชื่อสินค้า</label>
+            <input type="text" name="name" value="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">รายละเอียด</label>
+            <textarea name="description" rows="4" cols="80" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">ราคา</label>
+            <input type="number" name="price" value="" min=1 class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">หมวดหมู่</label>
+            <select class="form-control" name="category">
+              <% categories.forEach(function(category){ %>
+                  <option value="<%=category.name%>"><%=category.name%></option>
+              <% }); %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">ภาพสินค้า</label>
+            <input type="url" name="img" value="" min=1 class="form-control">
+          </div>
+          <input type="submit"  value="บันทึกข้อมูล" class="btn btn-success">
+        </form>
+      </div> <!-- /.row -->
+    </div>
+    <!-- /.col-lg-9 -->
+  </div>
+</body>
+
+</html>

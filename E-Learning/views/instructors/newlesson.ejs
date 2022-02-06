@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <%- include ../layout %>
+  <div class="container">
+    <h2 align="center">Class : <%=class_id %></h2>
+    <br>
+    <h5>Add Lesson</h5>
+    <hr>
+    <form class="form-group" action="/instructors/classes/<%=class_id %>/lesson/new" method="post">
+      <div class="form-group">
+        <label for="">บทที่</label>
+        <input type="text" name="lesson_number" value="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">หัวข้อ</label>
+        <input type="text" name="lesson_title" value="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">รายละเอียด</label>
+        <textarea name="lesson_body" rows="8" cols="80" class="form-control"></textarea>
+      </div>
+      <input type="submit" name="" value="เพิ่มบทเรียน" class="btn btn-primary">
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "e-learning",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "*",
+    "express": "~4.16.1",
+    "express-session": "*",
+    "express-validator": "*",
+    "http-errors": "~1.6.3",
+    "mongod": "*",
+    "mongoose": "*",
+    "morgan": "~1.9.1",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "express-messages": "^1.0.1"
+  }
+}

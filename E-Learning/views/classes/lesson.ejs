@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>My Class</title>
+</head>
+
+<body>
+  <%- include ../layout %>
+  <div class="container">
+    <h2 align="center">Class: <%= className.title %></h2>
+    <h3>บทที่ : <%= lesson.lesson_number %><h3>
+    <h4>หัวข้อ : <%= lesson.lesson_title %><h4>
+    <h6><%= lesson.lesson_body %><h6>
+    <br>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>My Class</title>
+</head>
+
+<body>
+  <%- include ../layout %>
+  <div class="container">
+    <h2 align="center">Hello : <%= instructor.fname %></h2>
+    <br>
+    <h5>My Class</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ClassID</th>
+          <th scope="col">ClassName</th>
+          <th scope="col">View Lesson</th>
+          <th scope="col">Add Lesson</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(instructor.classes){%>
+        <% for (var result of instructor.classes){ %>
+        <tr>
+          <td><%= result.class_id %></td>
+          <td><%= result.class_title %></td>
+          <td><a href="/classes/<%= result.class_id %>/lesson" class="btn btn-success">View Lesson</a></td>
+          <td><a href="/instructors/classes/<%= result.class_id %>/lesson/new" class="btn btn-primary">Add Lesson</a></td>
+        </tr>
+        <% } %>
+        <% } %>
+      </tbody>
+    </table>
+    <br>
+    <h5>Add Class</h5>
+    <hr>
+    <form class="form-group" action="/classes/register" method="post">
+      <div class="form-group">
+        <label for="">รหัสวิชา</label>
+        <input type="text" name="class_id" value="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">ชื่อวิชา</label>
+        <input type="text" name="class_name" value="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">ภาพปก</label>
+        <input type="text" name="img_url" value="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">คำอธิบาย</label>
+        <textarea name="description" rows="8" cols="80" class="form-control"></textarea>
+      </div>
+      <input type="hidden" name="instructor" value="<%= instructor.fname %>">
+      <input type="submit" name="" value="สร้างรายวิชา" class="btn btn-primary">
+    </form>
+  </div>
+</body>
+
+</html>

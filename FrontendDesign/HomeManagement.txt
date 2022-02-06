@@ -1,0 +1,30 @@
+<div class="container">
+          <div class="row">
+            <div class="col-lg-12 my-4">
+              <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                                                                         ชื่อ: <a href="#">Face Detection OpenCV</a>
+                      </h4>
+                      <h6>01:01:2010</h6>
+                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">
+                            <a href="#">See More</a>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="py-5 bg-dark">
+          <div class="container">
+            <p class="m-0 text-center text-white">Project Management : <a href="#">Backend</a></p>
+          </div>
+        </footer>

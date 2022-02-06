@@ -1,0 +1,11 @@
+<div class="col-lg-3">
+
+  <h1 class="my-4">Kong Shop</h1>
+  <div class="list-group">
+    <% categories.forEach(function(category){ %>
+          <a href="/products/show/?category=<%=category.name%>" class="list-group-item"><%= category.name %></a>
+    <% }); %>
+    <a href="/categories/add" class="btn btn-primary">เพิ่มหมวดหมู่สินค้า</a>
+  </div>
+
+</div>

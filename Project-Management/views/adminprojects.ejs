@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <%- include layout %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <h3 class="my-4" align="center">DashBoard</h3>
+        <div class="list-group">
+          <a href="/admin/projects/add" class="btn btn-primary">เพิ่มโปรเจค</a>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <h3 align="center" class="my-4">Admin Management</h3>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ชื่อโปรเจค</th>
+              <th scope="col">วันเริ่มโปรเจค</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% projects.forEach(function(project){ %>
+            <tr>
+              <th scope="row"><%= project.name %></th>
+              <td><%= project.date %></td>
+              <td>
+                <a href="/admin/projects/edit/<%=project._id %>" class="btn btn-primary">Edit</a>
+              </td>
+              <td>
+                <form action="/admin/projects/delete/" method="post" class="delete-project">
+                  <input type="hidden" name="id" value="<%=project._id %>">
+                  <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.delete-project').on('submit', function() {
+      if (confirm("คุณต้องการลบข้อมูลหรือไม่ ?")) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  });
+</script>
+
+</html>

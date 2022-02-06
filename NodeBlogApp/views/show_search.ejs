@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+    <%- include layout %>
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <% if (posts.length>0){ %>
+              <h3 class="my-4">ค้นหา " <%= search %> "</h3>
+              <hr>
+              <!-- Blog Post -->
+              <% posts.forEach(function(post){ %>
+                  <div class="card mb-4">
+                    <img class="card-img-top" src="<%= post.img %>" alt="Card image cap">
+                    <div class="card-body">
+                      <h2 class="card-title"><%= post.title %></h2>
+                      <p class="card-text">
+                          <%- descriptionText(post.content,400) %>
+                      </p>
+                      <a href="/show/<%= post._id %>" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                      Posted on <%= moment(post.date).format("DD-MM-YYYY") %> by
+                      <a href="#"><%= post.author %></a> , <a href="#"><%= post.category %></a>
+                    </div>
+                  </div>
+              <%})%>
+
+            <% } else { %>
+                  <h3 class="my-4">ไม่พบบทความ</h3>
+            <% } %>
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <%- include sidebar %>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Kong Ruksiam</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+  </body>
+
+</html>

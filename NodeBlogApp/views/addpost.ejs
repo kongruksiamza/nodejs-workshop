@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+  </head>
+  <body>
+        <%- include layout %>
+        <div class="container">
+            <h2 class="my-4" align="center">เขียนบทความ</h2>
+            <% if(locals.errors){ %>
+                  <ul class="alert alert-danger" role="alert">
+                    <% Object.values(errors).forEach(function(error){ %>
+                            <li><%= error.msg %></li>
+                    <% }) %>
+                  </ul>
+            <%}%>
+
+            <form action="/post/add" method="post">
+                  <div class="form-group">
+                        <label for="">หัวข้อ</label>
+                        <input type="text" name="title" value="" class="form-control">
+                  </div>
+                  <% if(locals.categories) { %>
+                  <div class="form-group">
+                        <label for="">หมวดหมู่</label>
+                        <select class="form-control" name="category">
+                                <% categories.forEach(function(category){ %>
+                                    <option value="<%=category.name %>"><%=category.name %></option>
+                                <% }); %>
+                        </select>
+                  </div>
+                  <% } %>
+                  <div class="form-group">
+                        <label for="">เนื้อหา</label>
+                        <textarea name="content" rows="8" cols="80"></textarea>
+                  </div>
+                  <div class="form-group">
+                        <label for="">ภาพปก</label>
+                        <input type="text" name="img" value="" class="form-control">
+                  </div>
+                  <div class="form-group">
+                        <label for="">ผู้เขียน</label>
+                        <input type="text" name="author" value="" class="form-control">
+                  </div>
+
+                  <input type="submit" name="" value="บันทึกข้อมูล" class="btn btn-primary">
+            </form>
+        </div>
+        <script type="text/javascript">
+                  CKEDITOR.replace( 'content' );
+        </script>
+  </body>
+</html>
